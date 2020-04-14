@@ -1,3 +1,17 @@
 .bg-dark-cinemotion {
     background-color: darkslateblue;
 }
+
+.emobutton {
+    color: white;
+    border-color: black;
+}
+.emobutton-off {
+    opacity: .3;
+    border-width: 1px;
+}
+
+.emobutton-on {
+    opacity: 1.0;
+    border-width: 3px;
+}

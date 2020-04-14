@@ -1,0 +1,41 @@
+{
+  "movie": {
+    "filename": "reef.mp4",
+    "type": "mp4",
+    "poster": "reef.jpg",
+    "width" : 640,
+    "height": 264
+  },
+  "buttons": {
+    "excited": {
+      "color": "#990000",
+      "key": "a"
+    },
+    "happy": {
+      "color": "#005500",
+      "key": "s"
+    },
+    "touched": {
+      "color": "#005555",
+      "key": "d"
+    },
+    "anxious": {
+      "color": "#888800",
+      "key": "f"
+    },
+    "sad": {
+      "color": "#000099",
+      "key": "g"
+    },
+    "angry": {
+      "color": "#990099",
+      "key": "h"
+    }
+  },
+  "AllOff" : {
+    "key" : "0"
+  },
+  "outputfile": {
+    "filename" : "testdata.txt"
+  }
+}

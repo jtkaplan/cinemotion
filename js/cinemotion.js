@@ -1,20 +1,15 @@
 var eventLog = $("#eventLog");
 var myPlayer = videojs("my-video");
-var numButtons = $("#numButtons").val();
+var allOffKey = $("#allOffKey").val();
 
 document.addEventListener('keydown', doKeyPress);
 
 function doKeyPress(e) {
-
-    if (e.key == "0") {
-
-        doButtonOff(numButtons);
-
+    if (e.key == allOffKey) {
+        doButtonOff();
     } else {
-
         doButtonClick(e.key);
     }
-
 }
 
 function doButtonClick(buttonNum) {
@@ -23,34 +18,31 @@ function doButtonClick(buttonNum) {
     var currentTime = myPlayer.currentTime();
     var buttonName = thisButton.text();
 
-    if (thisButton.hasClass('btn-success')) {
-        thisButton.removeClass('btn-success');
-        thisButton.addClass('btn-outline-success');
+    if (thisButton.hasClass('emobutton-on')) {
+        thisButton.removeClass('emobutton-on');
+        thisButton.addClass('emobutton-off');
 
        eventLog.append(currentTime + " " + buttonName + " Off<br>");
     } else {
-        thisButton.removeClass('btn-outline-success');
-        thisButton.addClass('btn-success');
+        thisButton.removeClass('emobutton-off');
+        thisButton.addClass('emobutton-on');
 
         eventLog.append( currentTime + " " + buttonName + " On<br>");
 
     }
 }
 
-function doButtonOff(numButtons) {
-
+function doButtonOff() {
 
     var currentTime = myPlayer.currentTime();
     eventLog.append(currentTime + " All Off<br>");
 
-    for (button=1; button <=numButtons; ++button  ) {
+    $('.emobutton').each(function(i, thisButton) {
 
-        var thisButton = $("#button"+button);
-        if (thisButton.hasClass('btn-success')) {
-            thisButton.removeClass('btn-success');
-            thisButton.addClass('btn-outline-success');
+        if ($(thisButton).hasClass('emobutton-on')) {
+            $(thisButton).removeClass('emobutton-on');
+            $(thisButton).addClass('emobutton-off');
         }
-
-    }
+    });
 
 }

@@ -21,7 +21,29 @@
 </head>
 
 <body>
-<?php include("navbar.php"); ?>
+<?php
+
+include("navbar.php");
+
+//Extract options from config file
+$configText = file_get_contents("config.json");
+$config_json = json_decode($configText,true);
+
+//Movie options
+$movie_filename = $config_json["movie"]["filename"];
+$movie_type = $config_json["movie"]["type"];
+$movie_poster = $config_json["movie"]["poster"];
+$movie_width = $config_json["movie"]["width"];
+$movie_height = $config_json["movie"]["height"];
+
+//Button options
+$button_data = $config_json["buttons"];
+$numButtons = count($button_data);
+$buttonsWidth = ($numButtons) * 100;
+$button_names = array_keys($button_data);
+$all_off_key = $config_json["AllOff"]["key"];
+
+?>
 <br><br>
 <div class="container-fluid">
     <div class="mx-auto" style="width: 640px;">
@@ -30,13 +52,14 @@
             class="video-js"
             preload="auto"
             controls
-            width="640"
-            height="264"
-            poster="posters/reef.jpg"
+            width="<?=$movie_width?>"
+            height="<?=$movie_height?>"
+            poster="posters/<?=$movie_poster?>"
             data-setup="{}"
         >
-            <source src="videos/reef.mp4" type="video/mp4" />
-        <!--    <source src="videos/reef.webm" type="video/webm" />-->
+
+            <source src="videos/<?=$movie_filename?>" type="video/<?=$movie_type?>" />
+
             <p class="vjs-no-js">
                 To view this video please enable JavaScript, and consider upgrading to a
                 web browser that
@@ -48,23 +71,23 @@
        <br>
         <?php
 
-        $buttonText = file_get_contents("buttons.txt");
-        $buttonList = explode("\n",$buttonText);
-        $numButtons = count($buttonList);
-        $buttonsWidth = $numButtons * 100;
+        //some values we need to give to javascript
+        echo "<input type=hidden id=\"allOffKey\" value=\"$all_off_key\">";
 
-        echo "<input type=hidden id=\"numButtons\" value=\"$numButtons\">";
         echo "<div class=\"mx-auto\" style=\"width: $buttonsWidth"."px;\">";
 
-
                 $buttonCounter = 1;
-                foreach ($buttonList as $buttonItem) {
+                foreach ($button_names as $button_name) {
 
-                    echo "<button type=\"button\" class=\"btn btn-outline-success\" id=\"button$buttonCounter\" name=\"$buttonItem\" onClick=\"doButtonClick($buttonCounter);\">$buttonItem</button> ";
+                    $thisButton = $button_data[$button_name];
+                    $buttonKey = $thisButton["key"];
+                    $buttonColor = $thisButton["color"];
+
+                    echo "<button type=\"button\" class=\"btn emobutton emobutton-off\" style=\"background-color: $buttonColor;\" id=\"button$buttonKey\" name=\"$button_name\" onClick=\"doButtonClick('$buttonKey');\">$button_name</button> ";
                     ++$buttonCounter;
                 }
 
-                echo "<br><button type=\"button\" class=\"btn btn-outline-secondary\" id=\"buttonOff\" onClick=\"doButtonOff($numButtons);\">All off</button>";
+                echo "<button type=\"button\" class=\"btn btn-outline-secondary\" id=\"buttonOff\" onClick=\"doButtonOff($numButtons);\">All off</button>";
             ?>
 
 
