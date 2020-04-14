@@ -28,6 +28,7 @@ include("navbar.php");
 //Extract options from config file
 $configText = file_get_contents("config.json");
 $config_json = json_decode($configText,true);
+$data_filename = $config_json["outputfile"]["filename"];
 
 //Movie options
 $movie_filename = $config_json["movie"]["filename"];
@@ -73,6 +74,7 @@ $all_off_key = $config_json["AllOff"]["key"];
 
         //some values we need to give to javascript
         echo "<input type=hidden id=\"allOffKey\" value=\"$all_off_key\">";
+        echo "<input type=hidden id=\"data_filename\" value=\"$data_filename\">";
 
         echo "<div class=\"mx-auto\" style=\"width: $buttonsWidth"."px;\">";
 
@@ -92,8 +94,11 @@ $all_off_key = $config_json["AllOff"]["key"];
 
 
         </div>
+    <br>  <br>  <br>
+    <button type="button" class="btn btn-outline-dark btn-sm" id="toggleLog" onClick="toggleLog();">Toggle log</button>
+    <button type="button" class="btn btn-outline-dark btn-sm" id="sendData" onClick="sendData();">Send data</button>
     <br>
-        <div class="card">
+        <div class="card overflow-auto" id="eventCard">
             <div class="card-body">
                 <h5 class="card-title">Event log</h5>
                 <p class="card-text" id="eventLog"></p>
@@ -106,7 +111,7 @@ $all_off_key = $config_json["AllOff"]["key"];
 
 
 <script src="https://vjs.zencdn.net/7.7.5/video.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="js/cinemotion.js"></script>
