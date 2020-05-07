@@ -1,0 +1,11 @@
+2.406909618 happy On
+3.572150888 happy Off
+4.753886522 touched On
+6.601097205 anxious On
+9.681414902 All Off
+11.23240738 angry On
+13.112216477 angry Off
+15.525002984 excited On
+16.145783695 touched On
+20.298548217 angry On
+22.999602384 touched Off

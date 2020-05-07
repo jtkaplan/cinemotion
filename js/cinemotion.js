@@ -83,7 +83,7 @@ function sendData() {
             success: function(data, textStatus, jqXHR)
             {
                 //data - response from server
-                alert("Data saved");
+                alert("Data saved: " + data);
             },
             error: function (jqXHR, textStatus, errorThrown)
             {

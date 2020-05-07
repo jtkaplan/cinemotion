@@ -1,7 +1,7 @@
 <?php
 //Receives data and writes it to data file
 
-$studyid = htmlentities($_POST['$studyid'], ENT_QUOTES, 'UTF-8');
+$studyid = htmlentities($_POST['studyid'], ENT_QUOTES, 'UTF-8');
 $subjectid = htmlentities($_POST['subjectid'], ENT_QUOTES, 'UTF-8');
 
 $eventData = $_POST['dataLog'];
