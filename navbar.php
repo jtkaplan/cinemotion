@@ -17,6 +17,7 @@
             <?php
             if (basename($_SERVER['PHP_SELF'])=="index.php") {
                 echo  "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\" onClick='toggleLog();'>Toggle event log</a></li>";
+                echo  "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\" onClick='sendData();'>Upload data</a></li>";
             }
             ?>
         </ul>
