@@ -7,17 +7,17 @@ var subjectid = $("#subjectid").val();
 document.addEventListener('keydown', doKeyPress);
 
 $(document).ready(function() {
-    bootbox.alert ("We are ready to start the video. Press OK to start...",function(){
+
+    var text = $("#startscreentext").html();
+
+    bootbox.alert (text,function(){
         startVideo();
     });
 });
 
 function startVideo() {
-
     myPlayer.controls(true);
     myPlayer.play();
-
-
 }
 
 
@@ -35,17 +35,19 @@ function doButtonClick(buttonNum) {
     var currentTime = myPlayer.currentTime();
     var buttonName = thisButton.text();
 
-    if (thisButton.hasClass('emobutton-on')) {
-        thisButton.removeClass('emobutton-on');
-        thisButton.addClass('emobutton-off');
+    if (thisButton.length) {
+        if (thisButton.hasClass('emobutton-on')) {
+            thisButton.removeClass('emobutton-on');
+            thisButton.addClass('emobutton-off');
 
-       eventLog.append(currentTime + " " + buttonName + " Off<br>\n");
-    } else {
-        thisButton.removeClass('emobutton-off');
-        thisButton.addClass('emobutton-on');
+            eventLog.append(currentTime + " " + buttonName + " Off<br>\n");
+        } else {
+            thisButton.removeClass('emobutton-off');
+            thisButton.addClass('emobutton-on');
 
-        eventLog.append( currentTime + " " + buttonName + " On<br>\n");
+            eventLog.append(currentTime + " " + buttonName + " On<br>\n");
 
+        }
     }
 }
 
@@ -83,15 +85,15 @@ function sendData() {
             success: function(data, textStatus, jqXHR)
             {
                 //data - response from server
-                alert("Data saved: " + data);
+                bootbox.alert("Data saved.");
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
-                alert("error");
+                bootbox.alert("error");
             }
         });
     } else {
-        alert("No data to send");
+        bootbox.alert("No data to send");
     }
 
 }

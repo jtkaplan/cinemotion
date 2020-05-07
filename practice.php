@@ -38,20 +38,14 @@ $movie_height = 360;
 ?>
 <br><br>
 <div class="container-fluid">
-    <div class="alert alert-dark">
+    <div class="alert">
         <?php
-
-
-        if ($subjectid && $studyid && $configFileFound) {
-
 
             echo "<div class=\"text-center\">";
             echo "<h2><span id='practiceTitle'>We will now practice</span></h2>";
             echo "<a class=\"btn btn-success\" id='practiceButton' role='button' onClick='doPractice();'>Press Here To Begin The Practice</a></div>";
             echo "<br>";
             include('video_module.php');
-
-        }
 
         ?>
 

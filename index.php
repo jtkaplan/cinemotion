@@ -31,6 +31,12 @@ include('parse_config.php');
 
 ?>
 <br><br>
+<div class="hiddenText" id="startscreentext">
+    <?php
+        $filename = "config/$studyid/startscreen.html";
+        include($filename);
+    ?>
+</div>
 <div class="container-fluid">
     <?php include('video_module.php') ?>
 </div>

@@ -28,6 +28,10 @@
     display:none;
 }
 
+.hiddenText {
+    display:none;
+}
+
 .studyinfotext {
     color: dimgray;
 }
