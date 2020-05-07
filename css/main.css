@@ -20,3 +20,14 @@
     max-height: 300px;
     display: none;
 }
+
+.instructionScreenFirst {
+
+}
+.instructionScreenNotFirst {
+    display:none;
+}
+
+.studyinfotext {
+    color: dimgray;
+}

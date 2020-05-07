@@ -1,0 +1,161 @@
+var eventLog = $("#eventLog");
+var myPlayer = videojs("my-video");
+var allOffKey = $("#allOffKey").val();
+var firstButton = $(".emobutton").first();
+var secondButton = $(".emobutton").eq(2);
+var thirdButton = $(".emobutton").eq(3);
+var practiceButton = $("#practiceButton");
+var practiceTitle = $("#practiceTitle");
+var practicePhase = 0;
+var studyid = $("#studyid").val();
+var subjectid = $("#subjectid").val();
+
+console.log("secondbutton " + secondButton.text() );
+console.log("thirdbutton " + thirdButton.text() );
+
+
+function doPractice() {
+
+    var buttonName = firstButton.text();
+
+    bootbox.alert ("We will now begin the practice.<br><br>When the video starts, press the button that corresponds to the onset of the feeling <b>"+buttonName+"</b>",function(){
+        startVideo();
+        practiceButton.hide();
+        practiceTitle.html("Press the <b>"+buttonName+"</b> key to turn it on.");
+        practicePhase = 1;
+    });
+
+
+
+}
+
+function startVideo() {
+
+    myPlayer.play();
+    document.addEventListener('keydown', doKeyPress);
+
+}
+
+function buttonOneTurnedOn() {
+
+    document.removeEventListener('keydown', doKeyPress);
+    var buttonName = firstButton.text();
+
+    bootbox.alert("Great! Notice how the button corresponding to "+buttonName+ " is now highlighted, indicating that you are currently feeling " + buttonName + ". <br><br>Next, press the key to turn off " + buttonName + ".",function(){
+        document.addEventListener('keydown', doKeyPress);
+        practiceTitle.html("Press the <b>"+buttonName+"</b> key to turn it off.");
+    });
+
+}
+
+function buttonOneTurnedOff() {
+
+    document.removeEventListener('keydown', doKeyPress);
+
+    var firstButton = $(".emobutton").first();
+    var buttonName = firstButton.text();
+
+    bootbox.alert("Good job! See how it goes back to being transparent? This indicates that this emotion is turned off and you are not currently feeling this emotion.",function(){
+
+        document.addEventListener('keydown', doKeyPress);
+        doButtonOff();
+        practicePhase = 2;
+        doPhase2();
+    });
+
+}
+
+function doPhase2() {
+
+    bootbox.alert("Next, press the key that corresponds to <b>" + secondButton.text()  + ".</b>"), function() {
+        practiceTitle.html("Press the <b>"+secondButton.text()+"</b> key to turn it on.");
+    };
+
+}
+
+function doPhase2B () {
+
+    bootbox.alert("Next, press the key that corresponds to <b>" + thirdButton.text()  + ".</b>", function() {
+        practiceTitle.html("Press the <b>"+thirdButton.text()+"</b> key to turn it on.");
+    });
+}
+function doPhase2C () {
+
+    bootbox.alert("This indicates that you are feeling both <b>" + secondButton.text() + "</b> and <b>"+ thirdButton.text() + "</b> right now in response to the movie.<br><br> Now, you can either press the key for <b>" + secondButton.text() + "</b> and the key for <b>"+ thirdButton.text() + "</b> in sequence to turn those emotions off. Or, if you are no longer feeling either emotion, you can use the <b>"+ allOffKey +"</b> key to deselect all emotions at once. Try pressing that next.",function() {
+        practiceTitle.html("Press the <b>"+allOffKey+"</b> key to turn all emotions off.");
+        practicePhase = 3;
+    });
+
+
+}
+
+function doPhase3() {
+
+
+    bootbox.alert("Good job! We are ready to start the study. Press OK to begin when you are ready.",function() {
+        var url = "http://www.jonaskaplan.com/cinemotion/index.php?subjectid="+subjectid+"&studyid="+studyid;
+        window.location.replace(url);
+
+    });
+}
+
+function doKeyPress(e) {
+    console.log('e.key: ' + e.key + 'and allOffkey: ' + allOffKey)
+    if (e.key == allOffKey) {
+        doButtonOff();
+    } else {
+        doButtonClick(e.key);
+    }
+}
+
+function doButtonClick(buttonNum) {
+
+    var buttonID = "button"+buttonNum;
+    var thisButton = $("#"+buttonID);
+    var currentTime = myPlayer.currentTime();
+    var buttonName = thisButton.text();
+    var firstButton = $(".emobutton").first();
+
+    if (thisButton.hasClass('emobutton-on')) {
+        thisButton.removeClass('emobutton-on');
+        thisButton.addClass('emobutton-off');
+
+        eventLog.append(currentTime + " " + buttonName + " Off<br>\n");
+    } else {
+        thisButton.removeClass('emobutton-off');
+        thisButton.addClass('emobutton-on');
+
+        eventLog.append( currentTime + " " + buttonName + " On<br>\n");
+
+    }
+    if (practicePhase === 1 && buttonID === firstButton.attr('id') && thisButton.hasClass('emobutton-on')) {
+        buttonOneTurnedOn();
+    } else if (practicePhase === 1 && buttonID === firstButton.attr('id') && thisButton.hasClass('emobutton-off')) {
+        buttonOneTurnedOff();
+    } else if (practicePhase === 2 && buttonID === secondButton.attr('id') && thisButton.hasClass('emobutton-on')) {
+        doPhase2B();
+    } else if (practicePhase === 2 && buttonID === thirdButton.attr('id') && thisButton.hasClass('emobutton-on')) {
+        doPhase2C();
+    }
+
+}
+
+function doButtonOff() {
+
+    var currentTime = myPlayer.currentTime();
+    eventLog.append(currentTime + " All Off<br>\n");
+
+    $('.emobutton').each(function (i, thisButton) {
+
+        if ($(thisButton).hasClass('emobutton-on')) {
+            $(thisButton).removeClass('emobutton-on');
+            $(thisButton).addClass('emobutton-off');
+        }
+    });
+
+    if (practicePhase === 3) {
+        doPhase3();
+    }
+
+}
+

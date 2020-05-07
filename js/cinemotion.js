@@ -1,8 +1,24 @@
 var eventLog = $("#eventLog");
 var myPlayer = videojs("my-video");
 var allOffKey = $("#allOffKey").val();
+var studyid = $("#studyid").val();
+var subjectid = $("#subjectid").val();
 
 document.addEventListener('keydown', doKeyPress);
+
+$(document).ready(function() {
+    bootbox.alert ("We are ready to start the video. Press OK to start...",function(){
+        startVideo();
+    });
+});
+
+function startVideo() {
+
+    myPlayer.controls(true);
+    myPlayer.play();
+
+
+}
 
 
 function doKeyPress(e) {
@@ -56,22 +72,18 @@ function sendData() {
 
     var eventData = $('#eventLog').text();
 
-
     if (eventData) {
-
-        var filename = $('#data_filename').val();
-
-        alert("will send data to file:  " + filename);
 
         $.ajax({
             url : "savedata.php",
             type: "POST",
-            data : {filename: filename,
-                     dataLog: eventData},
+            data : {studyid: studyid,
+                  subjectid: subjectid,
+                    dataLog: eventData},
             success: function(data, textStatus, jqXHR)
             {
                 //data - response from server
-                alert("data: " + data + " textStatus: " + textStatus);
+                alert("Data saved");
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
@@ -83,3 +95,4 @@ function sendData() {
     }
 
 }
+
