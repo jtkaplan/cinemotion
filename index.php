@@ -32,6 +32,7 @@ include('parse_config.php');
 ?>
 <br><br>
 <div class="hiddenText" id="startscreentext">
+    <input type="hidden" id="dataUploadInterval" value="<?=$data_uploadInterval?>">
     <?php
         $filename = "config/$studyid/startscreen.html";
         include($filename);

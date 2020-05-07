@@ -38,7 +38,7 @@
   "AllOff" : {
     "key" : "0"
   },
-  "outputfile": {
-    "filename" : "testdata.txt"
+  "dataUploadInterval": {
+    "seconds" : 60
   }
 }

@@ -16,4 +16,7 @@ $numButtons = count($button_data);
 $buttonsWidth = ($numButtons) * 85;
 $button_names = array_keys($button_data);
 $all_off_key = $config_json["AllOff"]["key"];
+
+//data options
+$data_uploadInterval = $config_json["dataUploadInterval"]["seconds"];
 ?>
