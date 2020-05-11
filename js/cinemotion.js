@@ -31,11 +31,15 @@ function startVideo() {
     myPlayer.controls(true);
     myPlayer.play();
     eventLog.append(myPlayer.currentTime() + " ##VIDEO STARTED<br>\n");
+
     myPlayer.on('timeupdate', function() {
         videoIsPlaying();
     });
     myPlayer.on('ended', function() {
         videoEnded();
+    });
+    myPlayer.on('pause', function() {
+        videoPaused();
     });
 }
 
@@ -48,11 +52,19 @@ function videoIsPlaying() {
     }
 }
 
+function videoPaused() {
+
+    var now = myPlayer.currentTime();
+    eventLog.append(now + " ##VIDEO PAUSED<br>\n");
+    sendData();
+
+}
+
 function videoEnded() {
 
     var now = myPlayer.currentTime();
-    sendData();
     eventLog.append(now + " ##VIDEO ENDED<br>\n");
+    sendData();
 
 }
 

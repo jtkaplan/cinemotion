@@ -40,5 +40,8 @@
   },
   "dataUploadInterval": {
     "seconds" : 10
+  },
+  "options": {
+    "clickableButtons": true
   }
 }

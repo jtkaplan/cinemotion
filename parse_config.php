@@ -19,4 +19,7 @@ $all_off_key = $config_json["AllOff"]["key"];
 
 //data options
 $data_uploadInterval = $config_json["dataUploadInterval"]["seconds"];
+
+//general options
+$clickableButtons = $config_json["options"]["clickableButtons"];
 ?>
