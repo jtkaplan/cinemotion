@@ -8,15 +8,18 @@
         poster="<?=$movie_poster?>"
         data-setup="{}"
     >
-
         <source src="<?=$movie_filename?>" type="video/<?=$movie_type?>" />
+
+        <?php
+        if ($captions_file){
+            echo "<track kind=\"captions\" src=\"$captions_file\" srclang=\"$captions_lang\" label=\"$captions_label\" default>";
+        }
+        ?>
+
 
         <p class="vjs-no-js">
             To view this video please enable JavaScript, and consider upgrading to a
-            web browser that
-            <a href="https://videojs.com/html5-video-support/" target="_blank"
-            >supports HTML5 video</a
-            >
+            web browser that<a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
         </p>
     </video>
     <br>

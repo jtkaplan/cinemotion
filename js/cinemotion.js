@@ -65,6 +65,12 @@ function videoEnded() {
     var now = myPlayer.currentTime();
     eventLog.append(now + " ##VIDEO ENDED<br>\n");
     sendData();
+    // TODO: Ending screens and redirect when experiment is done
+    if ($("#endscreen").length) {
+        text = $("#endscreen").html();
+        console.log(text);
+        bootbox.dialog({message: text,closeButton:false});
+    }
 
 }
 

@@ -43,5 +43,10 @@
   },
   "options": {
     "clickableButtons": false
+  },
+  "captions": {
+    "file": "forrest_minus3.vtt",
+    "lang": "de",
+    "label": "German"
   }
 }

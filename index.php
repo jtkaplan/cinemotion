@@ -42,6 +42,15 @@ include('parse_config.php');
     <?php include('video_module.php') ?>
 </div>
 
+<?php
+//End screen text if we have any
+if (file_exists("config/$studyid/endscreen.html")) {
+    echo "<div id=endscreen class=\"endScreen\">";
+        include("config/$studyid/endscreen.html");
+    echo "</div>";
+}
+
+?>
 
 
 
