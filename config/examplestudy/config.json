@@ -36,7 +36,8 @@
     }
   },
   "AllOff" : {
-    "key" : "0"
+    "key" : "0",
+    "ignore" : false
   },
   "dataUploadInterval": {
     "seconds" : 10

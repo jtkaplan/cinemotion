@@ -24,7 +24,7 @@ foreach ($button_names as $button_name) {
     ++$buttonCounter;
 }
 echo "<div class=\"col- text-center\">";
-if ($all_off_key) {
+if (!$all_off_ignore) {
     echo "<button type=\"button\" class=\"btn btn-outline-secondary\" id=\"buttonOff\" onClick=\"doButtonOff($numButtons);\">All off</button><br>$all_off_key";
 }
 echo "</div></div>";
