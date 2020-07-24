@@ -8,6 +8,7 @@ Sample version running here:
 
 http://www.jonaskaplan.com/cinemotion/start.php?studyid=examplestudy&subjectid=101
 
+
 ##Requirements
 Requires a web server with php. 
 
