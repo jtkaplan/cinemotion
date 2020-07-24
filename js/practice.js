@@ -9,7 +9,9 @@ var practiceTitle = $("#practiceTitle");
 var practicePhase = 0;
 var studyid = $("#studyid").val();
 var subjectid = $("#subjectid").val();
+var numButtons = $(".emobutton").length;
 
+console.log("numbuttons: " + numButtons);
 console.log("secondbutton " + secondButton.text() );
 console.log("thirdbutton " + thirdButton.text() );
 
@@ -18,7 +20,7 @@ function doPractice() {
 
     var buttonName = firstButton.text();
 
-    bootbox.alert ("We will now begin the practice.<br><br>When the video starts, press the button that corresponds to the onset of the feeling <b>"+buttonName+"</b>",function(){
+    bootbox.alert ("We will now begin the practice.<br><br>When the video starts, press the button that corresponds to the onset of <b>"+buttonName+"</b>",function(){
         startVideo();
         practiceButton.hide();
         practiceTitle.html("Press the <b>"+buttonName+"</b> key to turn it on.");
@@ -41,7 +43,7 @@ function buttonOneTurnedOn() {
     document.removeEventListener('keydown', doKeyPress);
     var buttonName = firstButton.text();
 
-    bootbox.alert("Great! Notice how the button corresponding to "+buttonName+ " is now highlighted, indicating that you are currently feeling " + buttonName + ". <br><br>Next, press the key to turn off " + buttonName + ".",function(){
+    bootbox.alert("Great! Notice how the button corresponding to "+buttonName+ " is now highlighted, which shows that you are currently indicating " + buttonName + ". <br><br>Next, press the key to turn off " + buttonName + ".",function(){
         document.addEventListener('keydown', doKeyPress);
         practiceTitle.html("Press the <b>"+buttonName+"</b> key to turn it off.");
     });
@@ -55,12 +57,17 @@ function buttonOneTurnedOff() {
     var firstButton = $(".emobutton").first();
     var buttonName = firstButton.text();
 
-    bootbox.alert("Good job! See how it goes back to being transparent? This indicates that this emotion is turned off and you are not currently feeling this emotion.",function(){
+    bootbox.alert("Good job! See how it goes back to being transparent? This indicates that this category is turned off and you are not currently indicating " + buttonName + ".",function(){
 
         document.addEventListener('keydown', doKeyPress);
         doButtonOff();
-        practicePhase = 2;
-        doPhase2();
+        if (numButtons > 1) {
+            practicePhase = 2;
+            doPhase2();
+        } else {
+            doPhase3();
+        }
+
     });
 
 }

@@ -29,7 +29,9 @@ include('parse_config.php');
 
 //override video to use practice file
 $movie_filename = "videos/waves.mp4";
+$movie2_filename = "videos/waves.mp4";
 $movie_type = "mp4";
+$movie2_type = "mp4";
 $movie_poster = "posters/waves.png";
 $movie_width = 640;
 $movie_height = 360;

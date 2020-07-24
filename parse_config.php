@@ -9,6 +9,8 @@ $movie_type = $config_json["movie"]["type"];
 $movie_poster = "config/$studyid/video/".$config_json["movie"]["poster"];
 $movie_width = $config_json["movie"]["width"];
 $movie_height = $config_json["movie"]["height"];
+$movie2_filename = "config/$studyid/video/".$config_json["movie2"]["filename"];
+$movie2_type = $config_json["movie2"]["type"];
 
 //captions
 $captions_file = "config/$studyid/video/".$config_json["captions"]["file"];

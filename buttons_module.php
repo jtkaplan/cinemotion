@@ -24,9 +24,10 @@ foreach ($button_names as $button_name) {
     ++$buttonCounter;
 }
 echo "<div class=\"col- text-center\">";
-echo "<button type=\"button\" class=\"btn btn-outline-secondary\" id=\"buttonOff\" onClick=\"doButtonOff($numButtons);\">All off</button><br>$all_off_key</div>";
-
-echo "</div>";
+if ($all_off_key) {
+    echo "<button type=\"button\" class=\"btn btn-outline-secondary\" id=\"buttonOff\" onClick=\"doButtonOff($numButtons);\">All off</button><br>$all_off_key";
+}
+echo "</div></div>";
 
 echo "</div>";
 

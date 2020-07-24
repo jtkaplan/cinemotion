@@ -8,6 +8,10 @@
         poster="<?=$movie_poster?>"
         data-setup="{}"
     >
+        <?php if ($movie2_filename) {
+            echo "<source src=\"$movie2_filename\" type=\"video/$movie2_type\" />";
+        }
+        ?>
         <source src="<?=$movie_filename?>" type="video/<?=$movie_type?>" />
 
         <?php
