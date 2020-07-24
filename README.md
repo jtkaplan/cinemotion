@@ -35,6 +35,7 @@ The config.json file inside your experiment folder contains all the settings for
 **button.excited.key** - keyboard key that user will press to turn on and off
 
 **AllOff.key** - this is a special button that turns off all the other buttons at once. 
+
 **AllOff.ignore** - if you dont want the AllOff button to appear, set this to true.
 
 **dataUpLoadInterval.seconds** - the user's keypress data will be sent to the server via a POST every X seconds. Data are also always sent whenever the video is paused, or when the end of the video is reached, regardless of this setting.
