@@ -14,6 +14,7 @@ var numButtons = $(".emobutton").length;
 console.log("numbuttons: " + numButtons);
 console.log("secondbutton " + secondButton.text() );
 console.log("thirdbutton " + thirdButton.text() );
+console.log("loc: " + window.location.href.toString().split("practice.php")[0]);
 
 
 function doPractice() {
@@ -109,11 +110,11 @@ function doPhase2C () {
 function doPhase3() {
 
     document.removeEventListener('keydown', doKeyPress);
+    var hrefStem = window.location.href.toString().split("practice.php")[0];
 
     bootbox.alert("Good job! We are ready to start the study. Press OK to begin when you are ready.",function() {
-        var url = "http://www.jonaskaplan.com/cinemotion/index.php?subjectid="+subjectid+"&studyid="+studyid;
+        var url = hrefStem + "index.php?subjectid="+subjectid+"&studyid="+studyid;
         window.location.replace(url);
-
     });
 }
 

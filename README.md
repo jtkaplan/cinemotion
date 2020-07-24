@@ -39,16 +39,32 @@ The config.json file inside your experiment folder contains all the settings for
 
 ##Usage
 
-There are two entry points for the experiment, one that initiates a practice before the video, and one that starts directly with the video stimulus itself. To run through a short practice, use the following url: 
+There are three entry points for the experiment, one that initiates a practice before the video, and one that starts directly with the video stimulus itself. To run through a short practice with instructions, use the following url: 
 
 http://yourserver.com/cinemotion/start.php?subjectid=101&studyid=examplestudy
 
 Change "examplestudy" to your study name to run a different study. 
 Subjectid is the subejctid that will be used to identify the uploaded data. 
 
+To run the practice without instructions, use: 
+
+http://yourserver.com/cinemotion/practice.php?subjectid=101&studyid=examplestudy
+
 To skip the practice use a URL like this: 
 
 http://yourserver.com/cinemotion/index.php?subjectid=101&studyid=examplestudy
+
+###Practice screens, start screens, and end screens
+
+Inside the study folder are several html files which you can edit to provide instructions, and messages at the start and end of the experiment. 
+
+**instructions1.html** is the first instructions screen, and the practice will run through as many of these numbered instructions files as there are in your config folder. 
+
+**startscreen.html** is text shown just before the start of the experiment. If you skip the practice, for example, this is the first text your participants will see. 
+
+**endscreen.html** this is shown when the video comes to an end. You can use this to redirect subjects to another video, for example in a multi-part study where you want breaks, or to direct them to a post-video survey or a site that logs their participation. 
+
+
 
 
 
