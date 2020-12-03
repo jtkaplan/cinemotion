@@ -33,18 +33,23 @@ include("navbar.php");
     <?php
 
     include('checkvariables.php');
+    include('parse_config.php');
 
-    if ($subjectid && $studyid && $configFileFound) {
+    if ($password==$_GET['password']) {
+
+        if ($subjectid && $studyid && $configFileFound) {
 
 
-        echo "<div class=\"text-center\">";
-        echo "<h2>Welcome to the study</h2>";
-        echo "<span class='studyinfotext'>study code: $studyid subject id: $subjectid</span><br>";
-        echo "<br><br>";
-        echo "<a class=\"btn btn-success\" href='instructions.php?subjectid=$subjectid&studyid=$studyid' role='button'>Press Here To Begin</a></div>";
+            echo "<div class=\"text-center\">";
+            echo "<h2>Welcome to the study</h2>";
+            echo "<span class='studyinfotext'>study code: $studyid subject id: $subjectid</span><br>";
+            echo "<br><br>";
+            echo "<a class=\"btn btn-success\" href='instructions.php?subjectid=$subjectid&studyid=$studyid' role='button'>Press Here To Begin</a></div>";
 
+        }
+    } else {
+        echo "Invalid password.<br>";
     }
-
     ?>
 
     </div>

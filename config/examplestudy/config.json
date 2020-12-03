@@ -37,13 +37,16 @@
   },
   "AllOff" : {
     "key" : "0",
-    "ignore" : false
+    "hidden" : false
   },
   "dataUploadInterval": {
     "seconds" : 10
   },
   "options": {
     "clickableButtons": true,
-    "controls": true
+    "controls": true,
+    "headphonecheck": true,
+    "headphonecheckMaxAttempts": 2,
+    "password":"thisisthedemopassword"
   }
 }

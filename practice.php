@@ -43,12 +43,15 @@ $movie_height = 360;
     <div class="alert">
         <?php
 
+        if ($password==$_GET['password']) {
             echo "<div class=\"text-center\">";
             echo "<h2><span id='practiceTitle'>We will now practice</span></h2>";
             echo "<a class=\"btn btn-success\" id='practiceButton' role='button' onClick='doPractice();'>Press Here To Begin The Practice</a></div>";
             echo "<br>";
             include('video_module.php');
-
+        } else {
+            echo "Invalid password.<br>";
+        }
         ?>
 
     </div>

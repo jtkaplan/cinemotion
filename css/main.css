@@ -24,6 +24,9 @@
 .instructionScreenFirst {
 
 }
+.headphonecheckScreen {
+    display:none;
+}
 .instructionScreenNotFirst {
     display:none;
 }

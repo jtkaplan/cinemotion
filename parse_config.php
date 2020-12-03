@@ -23,12 +23,17 @@ $numButtons = count($button_data);
 $buttonsWidth = ($numButtons) * 85;
 $button_names = array_keys($button_data);
 $all_off_key = $config_json["AllOff"]["key"];
-$all_off_ignore = $config_json["AllOff"]["ignore"];
+$all_off_ignore = $config_json["AllOff"]["hidden"];
 
 //data options
 $data_uploadInterval = $config_json["dataUploadInterval"]["seconds"];
 
+//headphonecheck options
+$headphonecheck = $config_json["options"]["headphonecheck"];
+$headphonecheckMaxAttempts = $config_json["options"]["headphonecheckMaxAttempts"];
+
 //general options
 $clickableButtons = $config_json["options"]["clickableButtons"];
 $controls = $config_json["options"]["controls"];
+$password = $config_json["options"]["password"];
 ?>
