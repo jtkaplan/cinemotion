@@ -21,6 +21,9 @@ if (!$studyid) {
     echo "<input type=hidden id='studyid' value='$studyid'>";
 }
 
+$password = $_GET['password'];
+echo "<input type=hidden id='password' value='$password'>";
+
 //CHECK FOR STUDY CONFIG FILE
 $configFileName = "config/$studyid/config.json";
 if (!file_exists($configFileName)) {
@@ -29,6 +32,7 @@ if (!file_exists($configFileName)) {
 } else {
     $configFileFound = 1;
 }
+
 
 
 

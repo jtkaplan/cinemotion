@@ -14,6 +14,7 @@ $(document).ready(function() {
 
     bootbox.alert (text,function(){
         startVideo();
+
     });
 });
 
@@ -23,12 +24,18 @@ function startVideo() {
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var dateTime = date+' '+time;
+    var controls =  $("#controls").val();
 
     eventLog.append("## STUDY " + studyid + "<br>\n");
     eventLog.append("## SUBJECT " + subjectid + "<br>\n");
     eventLog.append("## DATETIME " + dateTime + "<br>\n");
 
-    myPlayer.controls(true);
+    if (controls==="true") {
+        myPlayer.controls(true);
+    } else {
+        myPlayer.controls(false);
+    }
+
     myPlayer.play();
     eventLog.append(myPlayer.currentTime() + " ##VIDEO STARTED<br>\n");
 

@@ -9,6 +9,7 @@ var practiceTitle = $("#practiceTitle");
 var practicePhase = 0;
 var studyid = $("#studyid").val();
 var subjectid = $("#subjectid").val();
+var password = $("#password").val();
 var numButtons = $(".emobutton").length;
 
 console.log("numbuttons: " + numButtons);
@@ -21,7 +22,7 @@ function doPractice() {
 
     var buttonName = firstButton.text();
 
-    bootbox.alert ("We will now begin the practice.<br><br>When the video starts, press the button that corresponds to the onset of <b>"+buttonName+"</b>",function(){
+    bootbox.alert ("We will now begin the practice.<br><br>When the clip starts, press the button that corresponds to the onset of <b>"+buttonName+"</b>",function(){
         startVideo();
         practiceButton.hide();
         practiceTitle.html("Press the <b>"+buttonName+"</b> key to turn it on.");
@@ -98,7 +99,7 @@ function doPhase2C () {
 
     document.removeEventListener('keydown', doKeyPress);
 
-    bootbox.alert("This indicates that you are feeling both <b>" + secondButton.text() + "</b> and <b>"+ thirdButton.text() + "</b> right now in response to the movie.<br><br> Now, you can either press the key for <b>" + secondButton.text() + "</b> and the key for <b>"+ thirdButton.text() + "</b> in sequence to turn those emotions off. Or, if you are no longer feeling either emotion, you can use the <b>"+ allOffKey +"</b> key to deselect all emotions at once. Try pressing that next.",function() {
+    bootbox.alert("This indicates that you are feeling both <b>" + secondButton.text() + "</b> and <b>"+ thirdButton.text() + "</b> right now in response to the clip.<br><br> Now, you can either press the key for <b>" + secondButton.text() + "</b> and the key for <b>"+ thirdButton.text() + "</b> in sequence to turn those emotions off. Or, if you are no longer feeling either emotion, you can use the <b>"+ allOffKey +"</b> key to deselect all emotions at once. Try pressing that next.",function() {
         practiceTitle.html("Press the <b>"+allOffKey+"</b> key to turn all emotions off.");
         practicePhase = 3;
         document.addEventListener('keydown', doKeyPress);
@@ -113,7 +114,7 @@ function doPhase3() {
     var hrefStem = window.location.href.toString().split("practice.php")[0];
 
     bootbox.alert("Good job! We are ready to start the study. Press OK to begin when you are ready.",function() {
-        var url = hrefStem + "index.php?subjectid="+subjectid+"&studyid="+studyid;
+        var url = hrefStem + "index.php?subjectid="+subjectid+"&studyid="+studyid+"&password="+password;
         window.location.replace(url);
     });
 }

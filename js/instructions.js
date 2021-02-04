@@ -13,9 +13,10 @@ function nextInstructionScreen(numCurrentScreen) {
 
             var subjectid = $("#subjectid").val();
             var studyid = $("#studyid").val();
+            var password = $("#password").val();
 
             //Instructions are over. Start the practice
-            window.location.href = "practice.php?subjectid=" + subjectid + "&studyid=" + studyid;
+            window.location.href = "practice.php?subjectid=" + subjectid + "&studyid=" + studyid + "&password=" + password;
         }
 
     });

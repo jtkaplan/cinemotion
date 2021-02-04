@@ -19,22 +19,38 @@
 
     <title>Cinemotion - practice</title>
 </head>
-
-<body>
 <?php
-
-include("navbar.php");
+$configFileName = "config.json";
 include('checkvariables.php');
 include('parse_config.php');
+?>
+<body style="background-color:<?=$bgcolor?>;">
+<?php
+
 
 //override video to use practice file
-$movie_filename = "videos/waves.mp4";
-$movie2_filename = "videos/waves.mp4";
-$movie_type = "mp4";
-$movie2_type = "mp4";
-$movie_poster = "posters/waves.png";
-$movie_width = 640;
-$movie_height = 360;
+//$movie_filename = "videos/waves.mp4";
+//$movie2_filename = "videos/waves.mp4";
+//$movie_type = "mp4";
+//$movie2_type = "mp4";
+//$movie_poster = "posters/waves.png";
+//$movie_width = 640;
+//$movie_height = 360;
+
+if ($practice_filename == "") {
+
+    $movie_filename = "videos/waves.mp4";
+    $movie_type = "mp4";
+    $movie_poster = "posters/waves.png";
+    $movie_width = 640;
+    $movie_height = 360;
+} else {
+    $movie_filename = $practice_filename;
+    $movie_type = $practice_type;
+    $movie_poster = $practice_poster;
+    $movie_width = $practice_width;
+    $movie_height = $practice_height;
+}
 
 
 ?>
@@ -45,7 +61,7 @@ $movie_height = 360;
 
         if ($password==$_GET['password']) {
             echo "<div class=\"text-center\">";
-            echo "<h2><span id='practiceTitle'>We will now practice</span></h2>";
+            echo "<h2><span id='practiceTitle' style='color:$textColor;'>We will now practice</span></h2>";
             echo "<a class=\"btn btn-success\" id='practiceButton' role='button' onClick='doPractice();'>Press Here To Begin The Practice</a></div>";
             echo "<br>";
             include('video_module.php');

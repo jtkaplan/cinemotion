@@ -67,7 +67,7 @@ include("navbar.php");
                 $instructionClass = "instructionScreenFirst";
                 echo "<div id=instructions$numInstructionScreens class=\"alert alert-dark instructionScreen $instructionClass\"><p class=\"card-text\">";
                 include($instructionFile);
-                echo "</p><br><br><br>";
+                echo "</p><br><br><br</div>";
 
                 if ($headphonecheck) {
                     echo "<div class=\"text-center\"><button type=\"button\" class=\"btn btn-success\" onClick=\"showHeadphoneCheck();\">Begin</button></div>";

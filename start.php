@@ -17,6 +17,9 @@
     <!-- Our custom CSS -->
     <link rel="stylesheet" href="css/main.css">
 
+    <!-- Our custom Javascript -->
+    <script src="js/start.js"></script>
+
     <title>Cinemotion - welcome</title>
 </head>
 
@@ -43,8 +46,39 @@ include("navbar.php");
             echo "<div class=\"text-center\">";
             echo "<h2>Welcome to the study</h2>";
             echo "<span class='studyinfotext'>study code: $studyid subject id: $subjectid</span><br>";
-            echo "<br><br>";
-            echo "<a class=\"btn btn-success\" href='instructions.php?subjectid=$subjectid&studyid=$studyid' role='button'>Press Here To Begin</a></div>";
+            echo "<br><br></div></div>";
+
+            $studyinfoFiles = glob("config/$studyid/studyinfo*.html");
+
+            if (!empty($studyinfoFiles)) {
+                #There are studyinfo files to present
+
+                $numStudyInfoScreens = 0;
+                foreach ($studyinfoFiles as $studyinfoFile) {
+
+                    ++$numStudyInfoScreens;
+                    if ($numStudyInfoScreens > 1) {
+                        $instructionClass = "instructionScreenNotFirst";
+                        echo "<div id=instructions$numStudyInfoScreens class=\"alert alert-dark instructionScreen $instructionClass\"><p class=\"card-text\">";
+                        include($studyinfoFile);
+                        echo "</p><br><br><br></div>";
+
+                    } else {
+                        $instructionClass = "instructionScreenFirst";
+                        echo "<div id=instructions$numStudyInfoScreens class=\"alert alert-dark instructionScreen $instructionClass\"><p class=\"card-text\">";
+                        include($studyinfoFile);
+                        echo "</p><br><br><br>";
+                        echo "<div class=\"text-center\"><button type=\"button\" class=\"btn btn-success\" onClick=\"nextStudyInfoScreen($numStudyInfoScreens);\">Next</button></div></div>";
+                    }
+
+                }
+
+            } else {
+                echo "<a class=\"btn btn-success\" href='instructions.php?subjectid=$subjectid&studyid=$studyid&password=$password' role='button'>Press Here To Begin</a></div>";
+
+            }
+
+
 
         }
     } else {
@@ -52,7 +86,7 @@ include("navbar.php");
     }
     ?>
 
-    </div>
+
     <div class="card overflow-auto" id="eventCard">
         <div class="card-body">
             <h5 class="card-title">Event log</h5>

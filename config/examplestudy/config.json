@@ -4,6 +4,7 @@
   },
   "movie": {
     "filename": "bees.mp4",
+    "type_prefix": "video",
     "type": "mp4",
     "poster": "bees.png",
     "width" : 640,

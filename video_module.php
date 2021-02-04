@@ -1,4 +1,5 @@
 <div class="mx-auto" style="width: <?=$movie_width?>px;">
+
     <video
         id="my-video"
         class="video-js"
@@ -12,7 +13,9 @@
             echo "<source src=\"$movie2_filename\" type=\"video/$movie2_type\" />";
         }
         ?>
-        <source src="<?=$movie_filename?>" type="video/<?=$movie_type?>" />
+
+
+        <source src="<?=$movie_filename?>" type="<?=$movie_type_prefix?>/<?=$movie_type?>" />
 
         <?php
         if ($captions_file){

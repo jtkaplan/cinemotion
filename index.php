@@ -19,17 +19,28 @@
 
     <title>Cinemotion</title>
 </head>
+<?php
+$configFileName = "config.json";
+include('checkvariables.php');
+include('parse_config.php');
+?>
 
-<body>
+<body style="background-color:<?=$bgcolor?>;">
 <?php
 
 include("navbar.php");
-$configFileName = "config.json";
 
-include('checkvariables.php');
-include('parse_config.php');
+if ($controls) {
+    echo "<input type=hidden id='controls' value='true'>";
+} else {
+    echo "<input type=hidden id='controls' value='false'>";
+}
 
 ?>
+
+<?php  if ($password == $_GET['password']) {
+?>
+
 <br><br>
 <div class="hiddenText" id="startscreentext">
     <input type="hidden" id="dataUploadInterval" value="<?=$data_uploadInterval?>">
@@ -48,6 +59,9 @@ if (file_exists("config/$studyid/endscreen.html")) {
     echo "<div id=endscreen class=\"endScreen\">";
         include("config/$studyid/endscreen.html");
     echo "</div>";
+}
+} else {
+    echo "Invalid password.<br>";
 }
 
 ?>
