@@ -83,6 +83,9 @@ function videoEnded() {
 
 
 function doKeyPress(e) {
+    if (e.key==" "){
+        doButtonClick("space");
+    }
     if (e.key == allOffKey) {
         doButtonOff();
     } else {

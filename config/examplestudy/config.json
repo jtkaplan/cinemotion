@@ -46,7 +46,7 @@
   "options": {
     "clickableButtons": true,
     "controls": true,
-    "headphonecheck": true,
+    "headphonecheck": false,
     "headphonecheckMaxAttempts": 2,
     "password":"thisisthedemopassword"
   }
