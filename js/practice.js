@@ -121,6 +121,9 @@ function doPhase3() {
 
 function doKeyPress(e) {
     console.log('e.key: ' + e.key + 'and allOffkey: ' + allOffKey)
+    if (e.key==" "){
+        doButtonClick("space");
+    }
     if (e.key == allOffKey) {
         doButtonOff();
     } else {
